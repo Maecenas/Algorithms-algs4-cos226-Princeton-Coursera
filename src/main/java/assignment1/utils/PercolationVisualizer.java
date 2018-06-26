@@ -1,3 +1,5 @@
+package assignment1.utils;
+
 /******************************************************************************
  *  Compilation:  javac PercolationVisualizer.java
  *  Execution:    java PercolationVisualizer input.txt
@@ -16,10 +18,11 @@
  *
  ******************************************************************************/
 
-import java.awt.Font;
-
+import assignment1.Percolation;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
+
+import java.awt.*;
 
 public class PercolationVisualizer {
 
