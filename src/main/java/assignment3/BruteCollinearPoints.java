@@ -49,13 +49,14 @@ public class BruteCollinearPoints {
         if (points == null) { throw new IllegalArgumentException(); }
         final int numOfPoints = points.length;
 
-        for (int i = 0; i < numOfPoints; i++) {
-            if (points[i] == null) { throw new IllegalArgumentException(); }
+        for (Point point : points) {
+            if (point == null) { throw new IllegalArgumentException(); }
         }
 
-        ArrayList<Point> ps = new ArrayList<>(Arrays.asList(points));
-        for (int i = 0; i < numOfPoints; i++) {
-            if (ps.indexOf(ps.get(i)) != i) { throw new IllegalArgumentException(); }
+        for (int i = 0; i < points.length; i++) {
+            for (int j = i + 1; j < points.length; j++) {
+                if ((points[j].equals(points[i]))) { throw new IllegalArgumentException(); }
+            }
         }
     }
 

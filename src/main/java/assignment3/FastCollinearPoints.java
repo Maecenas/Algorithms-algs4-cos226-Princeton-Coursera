@@ -15,6 +15,7 @@ public class FastCollinearPoints {
     public FastCollinearPoints(Point[] points) {
         validate(points);
         int numOfPoints = points.length;
+        if (numOfPoints < 4) { return; }
         Point[] pointSet = points.clone();
         Arrays.sort(pointSet);
         // Given a point p, the following method determines
@@ -25,38 +26,35 @@ public class FastCollinearPoints {
             Point[] ps = pointSet.clone();
             Arrays.sort(ps, ps[i].slopeOrder());
             // For each other point q, determine the slope it makes with p.
-            // If so, these points, together with p, are collinear.
-
-            // Note that ps[0] == pointSet[i]
-            int slow = 1;
-            while (slow < numOfPoints - 2) {
-                int fast = slow;
-                double slopeSlow = ps[0].slopeTo(ps[fast++]);
-                double slopeFast = ps[0].slopeTo(ps[fast++]);
+            // Also note that ps[0] == pointSet[i]
+            for (int idxSlow = 1, idxFast; idxSlow < numOfPoints - 2; idxSlow = idxFast) {
+                idxFast = idxSlow;
+                double slopeSlow = ps[0].slopeTo(ps[idxFast++]);
+                double slopeFast = ps[0].slopeTo(ps[idxFast++]);
 
                 while (slopeSlow == slopeFast) {
-                    if (fast == numOfPoints) {
-                        fast++;
+                    if (idxFast == numOfPoints) {
+                        idxFast++;
                         break;
                     }
-                    slopeFast = ps[0].slopeTo(ps[fast++]);
+                    slopeFast = ps[0].slopeTo(ps[idxFast++]);
                 }
-                fast--;
+                idxFast--;
                 // Check if any 3 or more adjacent points in the sorted order
                 // have equal slopes with respect to p.
-                int numOfAdjacentPoint = fast - slow;
+                // If so, these points, together with p, are collinear.
+                int numOfAdjacentPoint = idxFast - idxSlow;
                 if (numOfAdjacentPoint >= 3) {
                     // sort the array as previous sort is unstable
                     Point[] segment = new Point[numOfAdjacentPoint + 1];
                     segment[0] = ps[0];
-                    System.arraycopy(ps, slow, segment, 1, numOfAdjacentPoint);
+                    System.arraycopy(ps, idxSlow, segment, 1, numOfAdjacentPoint);
                     Arrays.sort(segment);
-                    // make sure no duplicate
+                    // make sure no duplicate subsegment
                     if (segment[0] == ps[0]) {
                         lineSegments.add(new LineSegment(segment[0], segment[numOfAdjacentPoint]));
                     }
                 }
-                slow = fast;
             }
         }
     }
@@ -73,13 +71,14 @@ public class FastCollinearPoints {
         if (points == null) { throw new IllegalArgumentException(); }
         final int numOfPoints = points.length;
 
-        for (int i = 0; i < numOfPoints; i++) {
-            if (points[i] == null) { throw new IllegalArgumentException(); }
+        for (Point point : points) {
+            if (point == null) { throw new IllegalArgumentException(); }
         }
 
-        ArrayList<Point> ps = new ArrayList<>(Arrays.asList(points));
-        for (int i = 0; i < numOfPoints; i++) {
-            if (ps.indexOf(ps.get(i)) != i) { throw new IllegalArgumentException(); }
+        for (int i = 0; i < points.length; i++) {
+            for (int j = i + 1; j < points.length; j++) {
+                if ((points[j].equals(points[i]))) { throw new IllegalArgumentException(); }
+            }
         }
     }
 
