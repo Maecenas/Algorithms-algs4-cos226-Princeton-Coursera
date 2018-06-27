@@ -47,7 +47,6 @@ public class BruteCollinearPoints {
 
     private static void validate(Point[] points) {
         if (points == null) { throw new IllegalArgumentException(); }
-        final int numOfPoints = points.length;
 
         for (Point point : points) {
             if (point == null) { throw new IllegalArgumentException(); }

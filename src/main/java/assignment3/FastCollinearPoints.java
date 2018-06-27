@@ -27,18 +27,16 @@ public class FastCollinearPoints {
             Arrays.sort(ps, ps[i].slopeOrder());
             // For each other point q, determine the slope it makes with p.
             // Also note that ps[0] == pointSet[i]
-            for (int idxSlow = 1, idxFast; idxSlow < numOfPoints - 2; idxSlow = idxFast) {
-                idxFast = idxSlow;
-                double slopeSlow = ps[0].slopeTo(ps[idxFast++]);
-                double slopeFast = ps[0].slopeTo(ps[idxFast++]);
-
-                while (slopeSlow == slopeFast) {
+            double slopeSlow = ps[0].slopeTo(ps[1]), slopeFast = Double.NEGATIVE_INFINITY;
+            for (int idxSlow = 1, idxFast; idxSlow < numOfPoints - 2; idxSlow = idxFast, slopeSlow = slopeFast) {
+                idxFast = idxSlow + 1;
+                do {
                     if (idxFast == numOfPoints) {
                         idxFast++;
                         break;
                     }
                     slopeFast = ps[0].slopeTo(ps[idxFast++]);
-                }
+                } while (slopeSlow == slopeFast);
                 idxFast--;
                 // Check if any 3 or more adjacent points in the sorted order
                 // have equal slopes with respect to p.
@@ -69,7 +67,6 @@ public class FastCollinearPoints {
 
     private void validate(Point[] points) {
         if (points == null) { throw new IllegalArgumentException(); }
-        final int numOfPoints = points.length;
 
         for (Point point : points) {
             if (point == null) { throw new IllegalArgumentException(); }
