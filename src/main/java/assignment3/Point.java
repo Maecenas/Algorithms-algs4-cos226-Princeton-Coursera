@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
+    private final Comparator<Point> SLOPE_ORDER = new SlopeOrder();
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
 
@@ -109,7 +110,7 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
-        return new SlopeOrder();
+        return SLOPE_ORDER;
     }
 
     private class SlopeOrder implements Comparator<Point> {
