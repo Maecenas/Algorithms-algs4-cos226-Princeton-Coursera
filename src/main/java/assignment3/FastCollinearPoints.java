@@ -31,11 +31,11 @@ public class FastCollinearPoints {
             for (int idxSlow = 1, idxFast; idxSlow < numOfPoints - 2; idxSlow = idxFast, slopeSlow = slopeFast) {
                 idxFast = idxSlow + 1;
                 do {
-                    if (idxFast == numOfPoints) {
+                    if (idxFast != numOfPoints) {
+                        slopeFast = ps[0].slopeTo(ps[idxFast++]);
+                    } else {
                         idxFast++;
-                        break;
                     }
-                    slopeFast = ps[0].slopeTo(ps[idxFast++]);
                 } while (slopeSlow == slopeFast);
                 idxFast--;
                 // Check if any 3 or more adjacent points in the sorted order
