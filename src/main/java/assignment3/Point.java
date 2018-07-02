@@ -1,8 +1,8 @@
 package assignment3;
 
 /******************************************************************************
- *  Compilation:  javac assignment3.Point.java
- *  Execution:    java assignment3.Point
+ *  Compilation:  javac Point.java
+ *  Execution:    java Point
  *  Dependencies: none
  *
  *  An immutable data type for points in the plane.
@@ -128,7 +128,7 @@ public class Point implements Comparable<Point> {
     }
 
     /**
-     * Unit tests the assignment3.Point data type.
+     * Unit tests the Point data type.
      */
     public static void main(String[] args) {
         /* YOUR CODE HERE */
