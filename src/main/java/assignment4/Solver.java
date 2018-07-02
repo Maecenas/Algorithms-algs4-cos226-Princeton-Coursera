@@ -5,8 +5,6 @@ import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.util.Comparator;
-
 public class Solver {
     /**
      *  Find a solution to the initial 8-puzzle board using the A* algorithm with ManhattanPriority.
@@ -22,8 +20,8 @@ public class Solver {
         // Required by current API to detect infeasibility
         // using two synchronized A* searches
         if (initial == null) throw new IllegalArgumentException();
-        MinPQ<Node> pq = new MinPQ<>(getManhattanPriority());
-        MinPQ<Node> qp = new MinPQ<>(getManhattanPriority());
+        MinPQ<Node> pq = new MinPQ<>();
+        MinPQ<Node> qp = new MinPQ<>();
         pq.insert(new Node(initial, 0, null));
         qp.insert(new Node(initial.twin(), 0, null));
         Node cur, kur;
@@ -76,8 +74,7 @@ public class Solver {
         return solution;
     }
 
-
-    private class Node {
+    private class Node implements Comparable<Node> {
 
         private final Board board;
         private final int moves;
@@ -96,10 +93,11 @@ public class Solver {
             }
             return manhattanPriority;
         }
-    }
 
-    private static Comparator<Node> getManhattanPriority() {
-        return Comparator.comparing(Node::getManhattanPriority);
+        @Override
+        public int compareTo(Node node) {
+            return Integer.compare(this.getManhattanPriority(), node.getManhattanPriority());
+        }
     }
 
     // solve a slider puzzle
