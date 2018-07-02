@@ -1,15 +1,15 @@
 package assignment4.utils;
 
 /******************************************************************************
- *  Compilation:  javac assignment4.utils.PuzzleChecker.java
- *  Execution:    java assignment4.utils.PuzzleChecker filename1.txt filename2.txt ...
- *  Dependencies: assignment4.Board.java assignment4.Solver.java
+ *  Compilation:  javac PuzzleChecker.java
+ *  Execution:    java PuzzleChecker filename1.txt filename2.txt ...
+ *  Dependencies: Board.java Solver.java
  *
  *  This program creates an initial board from each filename specified
  *  on the command line and finds the minimum number of moves to
  *  reach the goal state.
  *
- *  % java assignment4.utils.PuzzleChecker puzzle*.txt
+ *  % java PuzzleChecker puzzle*.txt
  *  puzzle00.txt: 0
  *  puzzle01.txt: 1
  *  puzzle02.txt: 2
