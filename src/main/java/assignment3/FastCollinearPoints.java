@@ -27,16 +27,13 @@ public class FastCollinearPoints {
             Arrays.sort(ps, ps[i].slopeOrder());
             // For each other point q, determine the slope it makes with p.
             // Also note that ps[0] == pointSet[i]
-            double slopeSlow = ps[0].slopeTo(ps[1]), slopeFast = Double.NEGATIVE_INFINITY;
+            final Point anchor = ps[0];
+            double slopeSlow = anchor.slopeTo(ps[1]), slopeFast;
             for (int idxSlow = 1, idxFast; idxSlow < numOfPoints - 2; idxSlow = idxFast, slopeSlow = slopeFast) {
                 idxFast = idxSlow + 1;
                 do {
-                    if (idxFast != numOfPoints) {
-                        slopeFast = ps[0].slopeTo(ps[idxFast++]);
-                    } else {
-                        idxFast++;
-                    }
-                } while (slopeSlow == slopeFast);
+                    slopeFast = anchor.slopeTo(ps[idxFast++]);
+                } while (slopeSlow == slopeFast && idxFast < numOfPoints);
                 idxFast--;
                 // Check if any 3 or more adjacent points in the sorted order
                 // have equal slopes with respect to p.
@@ -45,12 +42,12 @@ public class FastCollinearPoints {
                 if (numOfAdjacentPoint >= 3) {
                     // sort the array as previous sort is unstable
                     Point[] segment = new Point[numOfAdjacentPoint + 1];
-                    segment[0] = ps[0];
+                    segment[0] = anchor;
                     System.arraycopy(ps, idxSlow, segment, 1, numOfAdjacentPoint);
                     Arrays.sort(segment);
                     // make sure no duplicate subsegment
-                    if (segment[0] == ps[0]) {
-                        lineSegments.add(new LineSegment(segment[0], segment[numOfAdjacentPoint]));
+                    if (segment[0] == anchor) {
+                        lineSegments.add(new LineSegment(anchor, segment[numOfAdjacentPoint]));
                     }
                 }
             }
@@ -105,7 +102,7 @@ public class FastCollinearPoints {
         {
             StdOut.println(segment);
             segment.draw();
+            StdDraw.show();
         }
-        StdDraw.show();
     }
 }
