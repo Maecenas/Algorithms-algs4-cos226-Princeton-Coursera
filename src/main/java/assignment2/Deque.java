@@ -123,7 +123,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Deque<Integer> deque = new Deque<Integer>();
+        Deque<Integer> deque = new Deque<>();
         for (int i = 0; i < 10; i += 2) {
             deque.addFirst(i);
             deque.addLast(i + 1);
@@ -138,6 +138,8 @@ public class Deque<Item> implements Iterable<Item> {
             deque.removeLast();
             deque.removeFirst();
         }
+        it = deque.iterator();
+        while (it.hasNext()) StdOut.print(it.next() + " ");
         StdOut.println("size: " + deque.size());
 
         for (int i = 0; i < 6; i += 2) {

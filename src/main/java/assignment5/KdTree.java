@@ -16,7 +16,7 @@ public class KdTree {
         private final Point2D p;          // the point
         private final RectHV rect;        // the axis-aligned rectangle corresponding to this node
         private final boolean VERTICAL;   // at VERTICAL level
-        private Node lb, rt;              // the lest/bottom, right/top subtree
+        private Node lb, rt;              // the left/bottom, right/top subtree
 
         Node(Point2D p, RectHV rect, boolean VERTICAL) {
             this.p = p;
@@ -67,15 +67,15 @@ public class KdTree {
         root = insert(p, root, null, 0);
     }
 
-    private Node insert(Point2D p, Node node, Node parent, int direction) {
+    private Node insert(Point2D p, Node root, Node parent, int direction) {
         // add new node
-        if (node == null) {
+        if (root == null) {
             if (n++ == 0) return new Node(p, new RectHV(0, 0, 1, 1), true);
             RectHV rect;
             if (parent.VERTICAL) {
                 if (direction > 0) {
                     rect = new RectHV(parent.rect.xmin(), parent.rect.ymin(), parent.p.x(), parent.rect.ymax());
-                } else  {
+                } else {
                     rect = new RectHV(parent.p.x(), parent.rect.ymin(), parent.rect.xmax(), parent.rect.ymax());
                 }
             } else {
@@ -87,11 +87,10 @@ public class KdTree {
             }
             return new Node(p, rect, !parent.VERTICAL);
         } else {
-            if (node.p.equals(p)) return node;
-            int cmp = node.compareTo(p);
-            if (cmp > 0) node.lb = insert(p, node.lb, node, cmp);
-            else         node.rt = insert(p, node.rt, node, cmp);
-            return node;
+            int cmp = root.compareTo(p);
+            if      (cmp > 0) root.lb = insert(p, root.lb, root, cmp);
+            else if (cmp < 0) root.rt = insert(p, root.rt, root, cmp);
+            return root;
         }
     }
 
@@ -109,10 +108,10 @@ public class KdTree {
 
     private static boolean contains(Point2D p, Node node) {
         if (node == null) return false;
-        if (node.p.equals(p)) return true;
         int cmp = node.compareTo(p);
-        if (cmp > 0) return contains(p, node.lb);
-        else return contains(p, node.rt);
+        if      (cmp > 0) return contains(p, node.lb);
+        else if (cmp < 0) return contains(p, node.rt);
+        else return true;
     }
 
     /**
@@ -171,19 +170,19 @@ public class KdTree {
         return nearest(root, root.p, p);
     }
 
-    private Point2D nearest(Node node, Point2D nearest, Point2D p) {
-        if (node != null) {
-            if (p.distanceSquaredTo(node.p) < p.distanceSquaredTo(nearest)) nearest = node.p;
-            int cmp = node.compareTo(p);
+    private Point2D nearest(Node root, Point2D nearest, Point2D p) {
+        if (root != null) {
+            if (p.distanceSquaredTo(root.p) < p.distanceSquaredTo(nearest)) nearest = root.p;
+            int cmp = root.compareTo(p);
             if (cmp > 0) {
-                nearest = nearest(node.lb, nearest, p);
-                if (node.rt != null && nearest.distanceSquaredTo(p) > node.rt.rect.distanceSquaredTo(p)) {
-                    nearest = nearest(node.rt, nearest, p);
+                nearest = nearest(root.lb, nearest, p);
+                if (root.rt != null && root.rt.rect.distanceSquaredTo(p) < nearest.distanceSquaredTo(p)) {
+                    nearest = nearest(root.rt, nearest, p);
                 }
             } else if (cmp < 0) {
-                nearest = nearest(node.rt, nearest, p);
-                if (node.lb != null && nearest.distanceSquaredTo(p) > node.lb.rect.distanceSquaredTo(p)) {
-                    nearest = nearest(node.lb, nearest, p);
+                nearest = nearest(root.rt, nearest, p);
+                if (root.lb != null && root.lb.rect.distanceSquaredTo(p) < nearest.distanceSquaredTo(p)) {
+                    nearest = nearest(root.lb, nearest, p);
                 }
             }
         }

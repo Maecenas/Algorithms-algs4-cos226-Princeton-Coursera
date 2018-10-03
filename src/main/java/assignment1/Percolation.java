@@ -12,7 +12,6 @@ public class Percolation {
     private final WeightedQuickUnionUF uf;
     private boolean percolateFlag = false;
 
-
     public Percolation(int n) {
         validate(n);
         this.size = n;
@@ -38,9 +37,10 @@ public class Percolation {
         if (row == size) {
             bottomFlag = true;
         }
-        // connnect with down site
-        if (!topFlag && row < size && site[index + size]) {
-            if (connectTop[uf.find(index + size)] || connectTop[uf.find(index)]) {
+        // Optimize if already connected to top/bottom with short-circuit evaluation
+        // connect with down site
+        if (row < size && site[index + size]) {
+            if (!topFlag && connectTop[uf.find(index + size)] || connectTop[uf.find(index)]) {
                 topFlag = true;
             }
             if (connectBottom[uf.find(index + size)] || connectBottom[uf.find(index)]) {

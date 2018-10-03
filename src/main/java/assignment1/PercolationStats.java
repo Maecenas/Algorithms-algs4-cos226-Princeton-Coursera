@@ -7,16 +7,14 @@ import edu.princeton.cs.algs4.StdStats;
 public class PercolationStats {
 
     private static final double CONFIDENCE_95 = 1.96;
-    private double[] fractions;
     private double mean;
     private double stddev;
     private double confidenceLo;
     private double confidenceHi;
 
-
     public PercolationStats(int n, int trials) {
         validate(n, trials);
-        fractions = new double[trials];
+        double[] fractions = new double[trials];
         for (int numOfTrail = 0; numOfTrail < trials; numOfTrail++) {
             Percolation p = new Percolation(n);
             while (!p.percolates()) {

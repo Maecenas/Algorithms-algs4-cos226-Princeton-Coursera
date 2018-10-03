@@ -39,7 +39,6 @@ public class Board {
                 for (int j = 0; j < n; j++) {
                     int value = blocks[i][j];
                     if (value != 0 && value != getGoalVal(i, j)) {
-//                     if (value != 0 && value != getGoalVal(i, j) && !isEnd(i, j)) {
                         hammingNumber++;
                     }
                 }
