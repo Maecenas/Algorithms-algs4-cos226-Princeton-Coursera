@@ -10,6 +10,21 @@ Also known as [algs4](http://algs4.cs.princeton.edu/) and Princeton [COS 226](ht
 
 ## Programming Assignments
 
+<table>
+  <tr>
+    <td rowspan="2"><a href="#programming-assignments">Assignment</a></td>
+    <td>Checklist</td>
+    <td>Code Implementation</td>
+    <td>Test Output</td>
+    <td rowspan="2">Fields of Study</td>
+  </tr>
+  <tr align="center">
+    <td>:white_check_mark:</td>
+    <td>:computer:</td>
+    <td>:100:</td>
+  </tr>
+</table>
+
 - <a href="http://coursera.cs.princeton.edu/algs4/assignments/percolation.html" id="percolation" title="Assignment" rel="nofollow">Percolation</a> [:white_check_mark:](http://coursera.cs.princeton.edu/algs4/checklists/percolation.html "Checklist") [:computer:](./src/main/java/assignment1 "Code Implementation") [:100:](./test-output/Assignment1-Percolation-Union_Find.txt "Test Output") - Union-Find
 - <a href="http://coursera.cs.princeton.edu/algs4/assignments/queues.html" id="queues" title="Assignment" rel="nofollow">Deque and RandomizedQueue</a> [:white_check_mark:](http://coursera.cs.princeton.edu/algs4/checklists/queues.html "Checklist") [:computer:](./src/main/java/assignment2 "Code Implementation") [:100:](./test-output/Assignment2-Deque_RandomizedQueue-Stack_Queue.txt "Test Output") - Stack and Queue
 - <a href="http://coursera.cs.princeton.edu/algs4/assignments/collinear.html" id="collinear" title="Assignment" rel="nofollow">Collinear Points</a> [:white_check_mark:](http://coursera.cs.princeton.edu/algs4/checklists/collinear.html "Checklist") [:computer:](./src/main/java/assignment3 "Code Implementation") [:100:](./test-output/Assignment3-CollinearPoints-Sorting.txt "Test Output") - Sorting
