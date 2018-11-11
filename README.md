@@ -1,5 +1,7 @@
 # Algorithms-Princeton-Coursera
 
+<img src="http://algs4.cs.princeton.edu/cover.png" align=right hspace=10 width=150 alt = "Algorithms 4/e textbook">
+
 Also known as [algs4](http://algs4.cs.princeton.edu/) and Princeton [COS 226](http://www.princeton.edu/~cos226/), **Algorithms** on Coursera is an introduction course to fundamental data types, algorithms, and data structures, divided into two Parts.
 
 - [Part I](https://www.coursera.org/learn/algorithms-part1/) focuses on elementary data structures, sorting, and searching. Topics include union−find, binary search, stacks, queues, bags, insertion sort, selection sort, shellsort, quicksort, 3-way quicksort, mergesort, heapsort, binary heaps, binary search trees, red−black trees, separate-chaining and linear-probing hash tables, Graham scan, and kd-trees.
