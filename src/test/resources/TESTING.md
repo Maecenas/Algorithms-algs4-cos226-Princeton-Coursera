@@ -5,6 +5,7 @@
 - [Collinear Points](http://coursera.cs.princeton.edu/algs4/testing/collinear/ "Test Resources") - Sorting
 - [8 Puzzle](http://coursera.cs.princeton.edu/algs4/testing/8puzzle/ "Test Resources") - PriorityQueue
 - [KdTree](http://coursera.cs.princeton.edu/algs4/testing/kdtree/ "Test Resources") - SearchTree
+- [WordNet](http://coursera.cs.princeton.edu/algs4/testing/wordnet/ "Test Resources") - DirectedGraph
 
 ### Omitted Resources
 
@@ -15,3 +16,12 @@
   - [input400K.txt](http://coursera.cs.princeton.edu/algs4/testing/kdtree/input400K.txt)
   - [input800K.txt](http://coursera.cs.princeton.edu/algs4/testing/kdtree/input800K.txt)
   - [input1M.txt](http://coursera.cs.princeton.edu/algs4/testing/kdtree/input1M.txt)
+- WordNet - DirectedGraph
+  - [digraph-wordnet.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/digraph-wordnet.txt)
+  - [hypernyms.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/hypernyms.txt)
+  - [hypernyms100K.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/hypernyms100K.txt)
+  - [hypernyms200K.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/hypernyms200K.txt)
+  - [hypernyms300K.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/hypernyms300K.txt)
+  - [synsets.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/synsets.txt)
+  - [synsets10000-subgraph.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/synsets10000-subgraph.txt)
+  - [synsets50000-subgraph.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/synsets50000-subgraph.txt)
