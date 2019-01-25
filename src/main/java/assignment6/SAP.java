@@ -8,14 +8,20 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class SAP {
 
+    private static final int HASH_INITIAL = 17;
+    private static final int HASH_MULTIPLIER = 31;
     private final Digraph G;
     private final int V;
     private int length;                       // length of the shortest path between V and W
     private int ancestor;                     // the nearest ancestor of V and W
+    private int vLast;                        // most recent visited input v
+    private int wLast;                        // most recent visited input w
     private int[] distTo1;                    // distTo1[v] = length of shortest V->v path
     private int[] distTo2;                    // distTo2[v] = length of shortest W->v path
     private boolean[] marked1;                // marked1[v] = is there an V->v path?
     private boolean[] marked2;                // marked2[v] = is there an W->v path?
+    private final Queue<Integer> q1;
+    private final Queue<Integer> q2;
     private final Queue<Integer> visited1;    // visited entries when accessing v
     private final Queue<Integer> visited2;    // visited entries when accessing w
 
@@ -23,6 +29,7 @@ public class SAP {
      * Construct a copy of given Digraph {@code G}
      *
      * @param G a digraph (not necessarily a DAG)
+     * @throws IllegalArgumentException if the digraph argument is null
      */
     public SAP(Digraph G) {
         validate(G);
@@ -32,6 +39,8 @@ public class SAP {
         distTo2 = new int[G.V()];
         marked1 = new boolean[G.V()];
         marked2 = new boolean[G.V()];
+        q1 = new Queue<>();
+        q2 = new Queue<>();
         visited1 = new Queue<>();
         visited2 = new Queue<>();
     }
@@ -42,6 +51,7 @@ public class SAP {
      * @param v a vertex in {@code G}
      * @param w a vertex in {@code G}
      * @return the length of shortest ancestral path, -1 if no such path
+     * @throws IllegalArgumentException if vertex argument is not between 0 and {@code V - 1}
      */
     public int length(int v, int w) {
         computeSAP(v, w);
@@ -55,6 +65,7 @@ public class SAP {
      * @param v a vertex in {@code G}
      * @param w a vertex in {@code G}
      * @return the ancestor of the shortest ancestral path, -1 if no such ancestor
+     * @throws IllegalArgumentException if vertex argument is not between 0 and {@code V - 1}
      */
     public int ancestor(int v, int w) {
         computeSAP(v, w);
@@ -68,6 +79,9 @@ public class SAP {
      * @param v a groups of vertices in {@code G}
      * @param w a groups of vertices in {@code G}
      * @return the length of shortest ancestral path, -1 if no such path
+     * @throws IllegalArgumentException if argument is null
+     *                                  or any element in it is null
+     *                                  or vertex argument is not between 0 and {@code V - 1}
      */
     public int length(Iterable<Integer> v, Iterable<Integer> w) {
         computeSAP(v, w);
@@ -81,6 +95,9 @@ public class SAP {
      * @param v a groups of vertices in {@code G}
      * @param w a groups of vertices in {@code G}
      * @return the ancestor of the shortest ancestral path, -1 if no such ancestor
+     * @throws IllegalArgumentException if argument is null
+     *                                  or any element in it is null
+     *                                  or vertex argument is not between 0 and {@code V - 1}
      */
     public int ancestor(Iterable<Integer> v, Iterable<Integer> w) {
         computeSAP(v, w);
@@ -96,6 +113,14 @@ public class SAP {
     private void computeSAP(int v, int w) {
         validate(v);
         validate(w);
+        if (vLast == v && wLast == w) return;
+        vLast = v;
+        wLast = w;
+        if (v == w) {
+            length = 0;
+            ancestor = v;
+            return;
+        }
         length = -1;
         ancestor = -1;
         distTo1[v] = 0;
@@ -104,11 +129,9 @@ public class SAP {
         marked2[w] = true;
         visited1.enqueue(v);
         visited2.enqueue(w);
-        Queue<Integer> q1 = new Queue<>();
-        Queue<Integer> q2 = new Queue<>();
         q1.enqueue(v);
         q2.enqueue(w);
-        bfs(q1, q2);
+        bfs();
     }
 
     /**
@@ -120,10 +143,11 @@ public class SAP {
     private void computeSAP(Iterable<Integer> v, Iterable<Integer> w) {
         validate(v);
         validate(w);
+        if (vLast == hash(v) && wLast == hash(w)) return;
+        vLast = hash(v);
+        wLast = hash(w);
         length = -1;
         ancestor = -1;
-        Queue<Integer> q1 = new Queue<>();
-        Queue<Integer> q2 = new Queue<>();
         for (int v0 : v) {
             marked1[v0] = true;
             visited1.enqueue(v0);
@@ -136,17 +160,14 @@ public class SAP {
             distTo2[w0] = 0;
             q2.enqueue(w0);
         }
-        bfs(q1, q2);
+        bfs();
     }
 
     /**
      * Run lockstep BFS from {@code v} and {@code w}
      * (alternating back and forth between exploring vertices in each of the two searches)
-     *
-     * @param q1 bfs search queue from {@code v}
-     * @param q2 bfs search queue from {@code w}
      */
-    private void bfs(Queue<Integer> q1, Queue<Integer> q2) {
+    private void bfs() {
         while (!q1.isEmpty() || !q2.isEmpty()) {
             bfsHelper(q1, distTo1, distTo2, marked1, marked2, visited1);
             bfsHelper(q2, distTo2, distTo1, marked2, marked1, visited2);
@@ -184,8 +205,20 @@ public class SAP {
      * that changed in the previous computation
      */
     private void reInit() {
-        while (!visited1.isEmpty()) marked1[visited1.dequeue()] = false;
-        while (!visited2.isEmpty()) marked2[visited2.dequeue()] = false;
+        while (!visited1.isEmpty()) {
+            marked1[visited1.dequeue()] = false;
+        }
+        while (!visited2.isEmpty()) {
+            marked2[visited2.dequeue()] = false;
+        }
+    }
+
+    private int hash(Iterable<Integer> v) {
+        int hash = HASH_INITIAL;
+        for (int i : v) {
+            hash = hash * HASH_MULTIPLIER + i;
+        }
+        return hash;
     }
 
     private void validate(int v) {

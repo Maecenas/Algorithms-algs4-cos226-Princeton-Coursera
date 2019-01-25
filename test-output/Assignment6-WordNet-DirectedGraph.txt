@@ -7,7 +7,7 @@ API:          PASSED
 
 Spotbugs:     PASSED
 PMD:          PASSED
-Checkstyle:   FAILED (0 errors, 8 warnings)
+Checkstyle:   FAILED (0 errors, 11 warnings)
 
 Correctness:  36/36 tests passed
 Memory:       4/4 tests passed
@@ -20,9 +20,9 @@ ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-1.1K Jan 24 15:50 Outcast.java
-7.3K Jan 24 15:50 SAP.java
-4.8K Jan 24 15:50 WordNet.java
+1.1K Jan 25 08:13 Outcast.java
+8.6K Jan 25 08:13 SAP.java
+4.8K Jan 25 08:13 WordNet.java
 
 
 ********************************************************************************
@@ -75,18 +75,22 @@ Outcast:
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] SAP.java:10:23: The instance variable 'V' must start with a lowercase letter and use camelCase. [MemberName]
-[WARN] SAP.java:155:53: The local (or parameter) variable 'distTo1' has the same name as an instance variable. Use a different name. [HiddenField]
-[WARN] SAP.java:155:68: The local (or parameter) variable 'distTo2' has the same name as an instance variable. Use a different name. [HiddenField]
-[WARN] SAP.java:156:38: The local (or parameter) variable 'marked1' has the same name as an instance variable. Use a different name. [HiddenField]
-[WARN] SAP.java:156:57: The local (or parameter) variable 'marked2' has the same name as an instance variable. Use a different name. [HiddenField]
-[WARN] SAP.java:157:43: The local (or parameter) variable 'visited1' has the same name as an instance variable. Use a different name. [HiddenField]
-[WARN] SAP.java:207:35: The local (or parameter) variable 'G' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] SAP.java:12:23: The instance variable 'V' must start with a lowercase letter and use camelCase. [MemberName]
+[WARN] SAP.java:177:43: The local (or parameter) variable 'q1' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] SAP.java:177:53: The local (or parameter) variable 'distTo1' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] SAP.java:177:68: The local (or parameter) variable 'distTo2' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] SAP.java:177:87: The local (or parameter) variable 'marked1' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] SAP.java:177:106: The local (or parameter) variable 'marked2' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] SAP.java:177:130: The local (or parameter) variable 'visited1' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] SAP.java:239:35: The local (or parameter) variable 'G' has the same name as an instance variable. Use a different name. [HiddenField]
 [WARN] WordNet.java:128:45: The local (or parameter) variable 'ids' has the same name as an instance variable. Use a different name. [HiddenField]
-Checkstyle ends with 0 errors and 8 warnings.
+Checkstyle ends with 0 errors and 9 warnings.
 
 % custom checkstyle checks for SAP.java
 *-----------------------------------------------------------
+[WARN] SAP.java:9:49: The numeric literal '17' appears to be unnecessary. [NumericLiteral]
+[WARN] SAP.java:10:52: The numeric literal '31' appears to be unnecessary. [NumericLiteral]
+Checkstyle ends with 0 errors and 2 warnings.
 
 % custom checkstyle checks for WordNet.java
 *-----------------------------------------------------------
@@ -432,8 +436,8 @@ Running 1 total tests.
 digraph G             = digraph-wordnet.txt
 vertices in G         = 82192
 edges    in G         = 84505
-student     memory    = 9170008 bytes
-reference   memory    = 10320456 bytes
+student     memory    = 9170144 bytes
+reference   memory    = 10320368 bytes
 ratio                 = 0.89
 maximum allowed ratio = 2.50
 
@@ -451,7 +455,7 @@ Test 1a: check memory of WordNet object
   * synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
     - number of vertices in digraph = 1000
     - number of edges    in digraph = 1008
-    - student   memory              = 607312 bytes
+    - student   memory              = 607416 bytes
     - reference memory              = 1494080 bytes
     - student / reference ratio     = 0.4
     - maximum allowed rato          = 2.0
@@ -462,7 +466,7 @@ Test 1b: check memory of WordNet object
   * synsets = synsets5000-subgraph.txt; hypernyms = hypernyms5000-subgraph.txt
     - number of vertices in digraph = 5000
     - number of edges    in digraph = 5059
-    - student   memory              = 2975912 bytes
+    - student   memory              = 2975856 bytes
     - reference memory              = 7296408 bytes
     - student / reference ratio     = 0.4
     - maximum allowed rato          = 2.0
@@ -473,7 +477,7 @@ Test 1c: check memory of WordNet object
   * synsets = synsets10000-subgraph.txt; hypernyms = hypernyms10000-subgraph.txt
     - number of vertices in digraph = 10000
     - number of edges    in digraph = 10087
-    - student   memory              = 7223960 bytes
+    - student   memory              = 7223968 bytes
     - reference memory              = 16931256 bytes
     - student / reference ratio     = 0.4
     - maximum allowed rato          = 2.0
@@ -496,15 +500,15 @@ Running 14 total tests.
 
 Test 1: time SAP constructor
    *  digraph-wordnet.txt
-      -  student solution time =  0.02 seconds
+      -  student solution time =  0.03 seconds
       -  maximum allowed  time =  1.00 seconds
 ==> passed
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  499445.00
-     -  student   solution calls per second:  333809.00
-     -  reference / student ratio:                 1.50
+     -  reference solution calls per second:  512414.00
+     -  student   solution calls per second:  523036.00
+     -  reference / student ratio:                 0.98
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
@@ -516,9 +520,9 @@ Test 2a-c: time length() and ancestor() with random pairs of vertices
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  177084.00
-     -  student   solution calls per second:  133793.00
-     -  reference / student ratio:                 1.32
+     -  reference solution calls per second:  182070.00
+     -  student   solution calls per second:  198014.00
+     -  reference / student ratio:                 0.92
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -529,9 +533,9 @@ Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   12105.00
-     -  student   solution calls per second:   15671.00
-     -  reference / student ratio:                 0.77
+     -  reference solution calls per second:   11797.00
+     -  student   solution calls per second:   23223.00
+     -  reference / student ratio:                 0.51
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -544,8 +548,7 @@ Test 5: Time 10 calls to length() and ancestor() on random path graphs
 
              V  seconds
         ---------------
-         32768     0.05
-         65536     0.11
+         65536     0.06
 ==> passed
 
 
@@ -595,7 +598,7 @@ Test 4: count Digraph operations during 1000 calls each
   * synsets = synsets.txt; hypernyms = hypernyms.txt
   * calls to constructor = 0
   * calls to addEdge()   = 0
-  * calls to adj()       = 46210
+  * calls to adj()       = 45638
   * calls to reverse()   = 0
   * calls to toString()  = 0
 
@@ -610,9 +613,9 @@ Test 5: time WordNet constructor
 
 Test 6a-e: time sap() and distance() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  165818.75
-    - student   solution calls per second:  122950.00
-    - reference / student ratio:                 1.35
+    - reference solution calls per second:  169332.00
+    - student   solution calls per second:  195243.75
+    - reference / student ratio:                 0.87
 
 => passed    student <= 10000x reference
 => passed    student <=  1000x reference
@@ -622,9 +625,9 @@ Test 6a-e: time sap() and distance() with random nouns
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  386671.00
-    - student   solution calls per second:  363121.00
-    - reference / student ratio:                 1.06
+    - reference solution calls per second:  446448.00
+    - student   solution calls per second:  429425.00
+    - reference / student ratio:                 1.04
     - allowed ratio:                             4.00
 ==> passed
 
