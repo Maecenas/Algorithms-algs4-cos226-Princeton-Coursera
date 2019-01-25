@@ -42,7 +42,7 @@ Also known as [algs4](http://algs4.cs.princeton.edu/) and Princeton [COS 226](ht
 <a href="#8puzzle" title="8 Puzzle - PriorityQueue" rel="nofollow"><img src="./src/test/resources/assignment4/logo.png" width="600"></a>
 <a href="#kdtree" title="KdTree - SearchTree" rel="nofollow"><img src="./src/test/resources/assignment5/logo.png" width="600"></a>
 <a href="#wordnet" title="WordNet - DirectedGraph" rel="nofollow"><img src="./src/test/resources/assignment6/logo.png" width="600"></a>
-<a href="#seam" title="Seam Carving - Shortest Path" rel="nofollow"><img src="http://coursera.cs.princeton.edu/algs4/testing/seam/logo.png" width="600"></a>
+<a href="#seam" title="Seam Carving - Shortest Path" rel="nofollow"><img src="./src/test/resources/assignment7/logo.png" width="600"></a>
 <a href="#baseball" title="Baseball Elimination - MaxFlow" rel="nofollow"><img src="http://coursera.cs.princeton.edu/algs4/testing/baseball/logo.png" width="600"></a>
 <a href="#boggle" title="Boggle - Trie" rel="nofollow"><img src="http://coursera.cs.princeton.edu/algs4/testing/boggle/logo.png" width="600"></a>
 <a href="#burrows" title="Burrows-Wheeler - Data Compression" rel="nofollow"><img src="http://coursera.cs.princeton.edu/algs4/testing/burrows/logo.png" width="600"></a>
