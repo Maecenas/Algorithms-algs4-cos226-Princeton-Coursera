@@ -254,15 +254,10 @@ public class SeamCarver {
         // In all, 1D array representation is not recommended to implement.
         if (!isTransposed) {
             for (int y = 0; y < height; y++) {
-                for (int x = 0; x < width; x++) {
-                    if (x < seam[y]) {
-                        pic[xyTo1DAfterwards(x, y)] = pic[xyTo1D(x, y)];
-                        energy[xyTo1DAfterwards(x, y)] = energy[xyTo1D(x, y)];
-                    } else if (x > seam[y]) {
-                        pic[xyTo1DAfterwards(x - 1, y)] = pic[xyTo1D(x, y)];
-                        energy[xyTo1DAfterwards(x - 1, y)] = energy[xyTo1D(x, y)];
-                    }
-                }
+                System.arraycopy(pic, xyTo1D(seam[y], y) + 1, pic, xyTo1DAfterwards(seam[y], y),
+                        width - seam[y] - 1 + (y < height - 1 ? seam[y + 1] : 0));
+                System.arraycopy(energy, xyTo1D(seam[y], y) + 1, energy, xyTo1DAfterwards(seam[y], y),
+                        width - seam[y] - 1 + (y < height - 1 ? seam[y + 1] : 0));
                 // Corner case when (0, y) is at seam
                 // seam[y] must not reach (width - 1), as we shift seam at border smaller by 1
                 if (seam[y] == 0) energy[xyTo1DAfterwards(0, y)] = BORDER_ENERGY;

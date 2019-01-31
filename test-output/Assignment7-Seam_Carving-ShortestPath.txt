@@ -20,7 +20,7 @@ ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
- 14K Jan 31 19:34 SeamCarver.java
+ 14K Jan 31 19:57 SeamCarver.java
 
 
 ********************************************************************************
@@ -49,7 +49,7 @@ SeamCarver:
 
 % spotbugs *.class
 *-----------------------------------------------------------
-M D MOM_MISLEADING_OVERLOAD_MODEL MOM: Class SeamCarver 'overloads' a method with both instance and static versions  At SeamCarver.java:[lines 336-345]
+M D MOM_MISLEADING_OVERLOAD_MODEL MOM: Class SeamCarver 'overloads' a method with both instance and static versions  At SeamCarver.java:[lines 331-340]
 M C SUA_SUSPICIOUS_UNINITIALIZED_ARRAY SUA: Method SeamCarver.findVerticalSeam() returns an array that appears not to be initialized  At SeamCarver.java:[line 169]
 Warnings generated: 2
 
@@ -66,7 +66,7 @@ Warnings generated: 2
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] SeamCarver.java:292:30: Did you mean to use 'Math.pow()' instead of the bitwise XOR operator ('^') ? [BitwiseXor]
+[WARN] SeamCarver.java:287:30: Did you mean to use 'Math.pow()' instead of the bitwise XOR operator ('^') ? [BitwiseXor]
 Checkstyle ends with 0 errors and 1 warning.
 
 % custom checkstyle checks for SeamCarver.java
@@ -463,9 +463,9 @@ Test 2: create a SeamCarver object for a given 736-by-584 picture;
 ==> passed
 
 Tests 3a-3c: time removeVerticalSeam() for a given 736-by-584 picture
-  * student   solution calls per second:    1193.17
-  * reference solution calls per second:      54.09
-  * reference / student ratio:                 0.05
+  * student   solution calls per second:    5081.62
+  * reference solution calls per second:      54.58
+  * reference / student ratio:                 0.01
 
 => passed      student <= 150.0x reference
 => passed      student <=  15.0x reference
@@ -473,18 +473,18 @@ Tests 3a-3c: time removeVerticalSeam() for a given 736-by-584 picture
 
 Tests 4a-4c: time findVerticalSeam() and removeVerticalSeam()
              for a given 736-by-584 picture
-  * student   solution calls per second:     236.01
-  * reference solution calls per second:       8.49
-  * reference / student ratio:                 0.04
+  * student   solution calls per second:     273.01
+  * reference solution calls per second:       8.74
+  * reference / student ratio:                 0.03
 
 => passed      student <= 150.0x reference
 => passed      student <=  15.0x reference
 => passed      student <=   2.3x reference
 
 Tests 5a-5c: time removeHorizontalSeam() for a given 736-by-584 picture
-  * student   solution calls per second:     642.19
-  * reference solution calls per second:      16.07
-  * reference / student ratio:                 0.03
+  * student   solution calls per second:     684.69
+  * reference solution calls per second:      16.11
+  * reference / student ratio:                 0.02
 
 => passed      student <= 150.0x reference
 => passed      student <=  15.0x reference
@@ -492,9 +492,9 @@ Tests 5a-5c: time removeHorizontalSeam() for a given 736-by-584 picture
 
 Tests 6a-6c: time findHorizontalSeam() and removeHorizontalSeam()
              for a given 736-by-584 picture
-  * student   solution calls per second:      44.16
-  * reference solution calls per second:       5.57
-  * reference / student ratio:                 0.13
+  * student   solution calls per second:      44.59
+  * reference solution calls per second:       5.56
+  * reference / student ratio:                 0.12
 
 => passed      student <= 150.0x reference
 => passed      student <=  15.0x reference
@@ -502,8 +502,8 @@ Tests 6a-6c: time findHorizontalSeam() and removeHorizontalSeam()
 
 Tests 7a-7c: time findHorizontalSeam(), removeHorizontalSeam(), findVerticalSeam(),
              and removeVerticalSeam() for a given 736-by-584 picture
-  * student   solution calls per second:      37.33
-  * reference solution calls per second:       3.49
+  * student   solution calls per second:      38.95
+  * reference solution calls per second:       3.48
   * reference / student ratio:                 0.09
 
 => passed      student <= 150.0x reference
