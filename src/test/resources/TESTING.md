@@ -7,6 +7,7 @@
 - [KdTree](http://coursera.cs.princeton.edu/algs4/testing/kdtree/ "Test Resources") - SearchTree
 - [WordNet](http://coursera.cs.princeton.edu/algs4/testing/wordnet/ "Test Resources") - DirectedGraph
 - [Seam Carving](http://coursera.cs.princeton.edu/algs4/testing/seam/ "Test Resources") - Shortest Path
+- [Baseball Elimination](http://coursera.cs.princeton.edu/algs4/testing/baseball/ "Test Resources") - MaxFlow
 
 ### Omitted Resources
 
