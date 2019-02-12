@@ -8,6 +8,7 @@
 - [WordNet](http://coursera.cs.princeton.edu/algs4/testing/wordnet/ "Test Resources") - DirectedGraph
 - [Seam Carving](http://coursera.cs.princeton.edu/algs4/testing/seam/ "Test Resources") - Shortest Path
 - [Baseball Elimination](http://coursera.cs.princeton.edu/algs4/testing/baseball/ "Test Resources") - MaxFlow
+- [Boggle](http://coursera.cs.princeton.edu/algs4/testing/boggle/ "Test Resources") - Trie
 
 ### Omitted Resources
 
@@ -27,3 +28,9 @@
   - [synsets.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/synsets.txt)
   - [synsets10000-subgraph.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/synsets10000-subgraph.txt)
   - [synsets50000-subgraph.txt](http://coursera.cs.princeton.edu/algs4/testing/wordnet/synsets50000-subgraph.txt)
+- Boggle - Trie
+  - [dictionary-enable2k.txt](http://coursera.cs.princeton.edu/algs4/testing/boggle/dictionary-enable2k.txt)
+  - [dictionary-sowpods.txt](http://coursera.cs.princeton.edu/algs4/testing/boggle/dictionary-sowpods.txt)
+  - [dictionary-twl06.txt](http://coursera.cs.princeton.edu/algs4/testing/boggle/dictionary-twl06.txt)
+  - [dictionary-yawl.txt](http://coursera.cs.princeton.edu/algs4/testing/boggle/dictionary-yawl.txt)
+  - [dictionary-zingarelli2005.txt](http://coursera.cs.princeton.edu/algs4/testing/boggle/dictionary-zingarelli2005.txt)
