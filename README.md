@@ -8,7 +8,13 @@ Also known as [algs4](http://algs4.cs.princeton.edu/) and Princeton [COS 226](ht
 
 - [Part II](https://www.coursera.org/learn/algorithms-part2/) focuses on graph and string-processing algorithms. Topics include depth-first search, breadth-first search, topological sort, Kosaraju−Sharir, Kruskal, Prim, Dijkistra, Bellman−Ford, Ford−Fulkerson, LSD radix sort, MSD radix sort, 3-way radix quicksort, multiway tries, ternary search tries, Knuth−Morris−Pratt, Boyer−Moore, Rabin–Karp, regular expression matching, run-length coding, Huffman coding, LZW compression and Burrows−Wheeler transform. Part II also introduces reductions and intractability, including the P = NP problem.
 
+## Lectures and Slides
+
+I've compacted all the related slides into a pdf file, and added outlines (bookmarks, navigation trees, table of contents) for referencing. [Available at iCloud Drive](https://www.icloud.com/iclouddrive/02dFD22xzdrap3i8iB5FjSPmw#Algorithms-algs4-slides) (1584 pages, 160 MB).
+
 ## Programming Assignments
+
+The algs4 Java algorithms and clients is a must to run any application. You may follow the [instructions](https://algs4.cs.princeton.edu/code/) to access and import the text book library. 
 
 <table>
   <tr>
